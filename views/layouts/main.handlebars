@@ -10,7 +10,15 @@
 </head>
 
 <body>
-  <nav>
+  <header class="display-flex justify-space-between align-center p-2">
+    <h1>
+      User Registry
+    </h1>
+    <!-- Only display the logout button if the user is logged in -->
+    {{#if logged_in}}
+    <nav>
+      <button class="btn" id="logout">logout</button>
+        
     <header>
       <a href="/">
         <h1 id='tech-blog-title'>Art Website Header</h1>
@@ -20,14 +28,22 @@
     <ul>
       <li><a href="/upload">Share your artwork</a></li>
       <li><a href="/historical-art">View Historical Art</a></li>
-      {{!-- <li><a href="/login">Login</a></li>
-      <li><a href="#" id='logout-button'>Logout</a></li> --}}
     </ul>
-  </nav>
-
-    <main>
-      {{{ body }}}
-    </main>
     
+    </nav>
+    {{/if}}
+  </header>
+  <main class="container container-fluid mt-5">
+    {{{ body }}}
+  </main>
+  <footer>
+      
+  </footer>
+
+  <!-- Only include the logout script if the user is logged in -->
+  {{#if logged_in}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
 </body>
+
 </html>
