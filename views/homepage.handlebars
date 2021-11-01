@@ -1,3 +1,13 @@
+{{!-- grid based card system that will be 3 wide with space between of the artworks --}}
+
+<section class="container">
+  {{!-- gallery will be replaced when we build out db --}}
+    {{#each gallery.artwork as |artCard|}}
+      {{> artwork-details}}
+    {{/each}}
+</section>
+
+{{!--
 {{#each users as |user| }}
 <div class="row align-center mb-5">
   <div class="col-md-6">
@@ -8,3 +18,4 @@
   </div>
 </div>
 {{/each}}
+--}}
