@@ -1,11 +1,28 @@
 {{!-- grid based card system that will be 3 wide with space between of the artworks --}}
 
 <section class="container">
-  {{!-- gallery will be replaced when we build out db --}}
-    {{#each gallery.artwork as |artCard|}}
-      {{> artwork-details}}
+
+  {{#each artwork as |artCard|}}
+
+    <section class="card">
+      <a href="/painting/{{id}}" class='card-click'>
+        <div class="card-body">
+          <img src="/images/{{filename}}" alt="{{description}}">
+          <h5>{{title}}</h5>
+          <p>By: {{artist}}</p>
+        </div>
+      </a>
+    </section>
+
     {{/each}}
 </section>
+
+<script src='../public/js/click-artwork.js'></script>
+
+
+
+
+
 
 {{!--
 {{#each users as |user| }}
