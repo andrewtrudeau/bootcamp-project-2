@@ -1,0 +1,29 @@
+<div class="wrapper-upload shadow-sharp">
+  <div class="drag-area">
+    <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+    <header>Drag & Drop to Upload File</header>
+    <span>OR</span>
+    <button>Browse File</button>
+    <input id="fileData" type="file" hidden>
+  </div>
+
+  <form class="form upload-form">
+    <div class="form-group">
+      <label for="artist">Artist:</label><br>
+      <input class="form-input" type="text" id="artist" value="{{user.name}}" />
+    </div>
+    <div class="form-group">
+      <label for="title">Title:</label><br>
+      <input class="form-input" type="text" id="title" />
+    </div>
+    <div class="form-group">
+      <label for="desc">Description:</label><br>
+      <textarea class="form-input" type="text" id="desc"></textarea>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-primary" type="submit">Post Artwork</button>
+    </div>
+  </form>
+</div>
+<p id="user" style="display: none;">{{user.id}}</p>
+<script src="/js/upload.js"></script>

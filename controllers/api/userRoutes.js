@@ -1,6 +1,8 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Artwork } = require('../../models');
 const fetch = require('node-fetch');
+let path = require('path')
+let fs = require('fs');
 
 router.post('/login', async (req, res) => {
   try {
@@ -11,7 +13,6 @@ router.post('/login', async (req, res) => {
       res
         .status(400)
         .json({ message: 'Incorrect email or password, please try again' });
-      console.log("ERROR WRONG USER DATA");
 
       return;
     }
@@ -23,11 +24,9 @@ router.post('/login', async (req, res) => {
       res
         .status(400)
         .json({ message: 'Incorrect email or password, please try again' });
-      console.log("ERROR WRONG PASSWORD");
 
       return;
     }
-    console.log("NAME, ID", userData.name, userData.id);
 
     // Create session variables based on the logged in user
     req.session.save(() => {
@@ -35,15 +34,11 @@ router.post('/login', async (req, res) => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
 
-      console.log("logged in", req.session.logged_in);
       res.json({ user: userData, message: 'You are now logged in!' });
-      console.log("logged in");
 
     });
 
   } catch (err) {
-    console.log("ERROR", err);
-
     res.status(400).json(err);
   }
 });
@@ -54,6 +49,45 @@ router.post('/create-user', async (req, res) => {
     let user = await User.create(req.body).catch((err) => { console.log(err) });
 
     res.json({ user: user, message: 'User Created' });
+
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+router.post('/upload', async (req, res) => {
+  try {
+
+    let artwork = await Artwork.create(req.body).catch((err) => { console.log(err) });
+
+    res.json({ artwork: artwork, message: 'Artwork Posted!' });
+
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+
+router.post('/uploadFile', async (req, res) => {
+  try {
+    if (req.files) {
+      let file = req.files.image;
+      console.log(req.body);
+
+      const fileName = path.parse(file.name).name
+
+      let dir = './db/images/' + fileName;
+      if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir);
+      }
+
+      file.mv(dir + "/" + file.name);
+
+      res.json({ status: "uploaded" });
+
+    } else {
+      res.status(400).json({ status: "No file found." });
+    }
 
   } catch (err) {
     res.status(400).json(err);

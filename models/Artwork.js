@@ -15,6 +15,10 @@ Artwork.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    artist: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     description: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -22,16 +26,6 @@ Artwork.init(
     img_path: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
-    comments: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      get: function () {
-        return JSON.parse(this.getDataValue('comments'));
-      },
-      set: function (val) {
-        return this.setDataValue('comments', JSON.stringify(val));
-      }
     },
     user_id: {
       type: DataTypes.INTEGER,
@@ -41,6 +35,18 @@ Artwork.init(
         key: 'id',
       },
     },
+    comments: {
+      type: DataTypes.STRING,
+      defaultValue: "[]",
+      allowNull: false,
+      get: function () {
+        return JSON.parse(this.getDataValue('comments'));
+      },
+      set: function (val) {
+        return this.setDataValue('comments', JSON.stringify(val));
+      }
+    },
+
   },
   {
     sequelize,

@@ -22,6 +22,23 @@ router.get('/', withAuth, async (req, res) => {
   }
 });
 
+router.get('/upload', withAuth, async (req, res) => {
+  try {
+
+    const userData = await User.findOne({
+      where: {
+        id: req.session.user_id,
+      },
+    });
+    const user = userData.get({ plain: true });
+
+    res.render('upload', { user: user });
+
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 router.get('/login', (req, res) => {
   // If a session exists, redirect the request to the homepage
   if (req.session.logged_in) {
