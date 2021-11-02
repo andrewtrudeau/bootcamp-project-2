@@ -1,0 +1,21 @@
+  {{!-- TODO: Change Gallery to database names --}}
+{{!--display main art--}}
+<div class='specific-artwork-image'>
+  <img src="{{artwork.img}}" alt="{{artwork.description}}">
+</div>
+
+{{!-- display title and artist name --}}
+<div class='specific-artwork-details'>
+  <h2 id='specific-artist-name'>Artist: {{artwork.artist_name}}</h2>
+  <h2 id='specific-artist-title'>Title: {{artwork.title}}</h2>
+</div>
+
+<div class='specific-artwork-description'>
+  <h2 class='description-header'>Description</h2>
+  <p>{{artwork.description}}</p>
+</div>
+
+{{!-- display comments --}}
+<div class='comment-container'>
+  {{>specific-artwork-comments}}
+</div>

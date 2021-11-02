@@ -59,4 +59,24 @@ router.get('/create-user', (req, res) => {
   res.render('create-user');
 });
 
+router.get('/artwork', withAuth, async (req, res) => {
+  try {
+    const artworkData = await Artwork.findAll({
+      include: [{ 
+        model: User,
+        attributes: ['name'],
+      }],
+    })
+  
+  
+  
+  
+  } catch {
+    res.status(500).json(err);
+  }
+})
+
+router.get('/artwork/:id',  (req, res) => {
+
+})
 module.exports = router;
