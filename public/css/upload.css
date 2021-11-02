@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {}
+
+.wrapper-upload {
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: #ad5252;
+    border-radius: 20px;
+    margin-bottom: 100px;
+    display: flex;
+    flex-flow: row wrap;
+    padding: 75px;
+}
+
+.shadow-sharp {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25), 0 2px 2px rgba(0, 0, 0, 0.20), 0 4px 4px rgba(0, 0, 0, 0.15), 0 8px 8px rgba(0, 0, 0, 0.10), 0 16px 16px rgba(0, 0, 0, 0.05);
+}
+
+.drag-area {
+    text-align: center;
+    border: 2px dashed #fff;
+    height: 500px;
+    width: 500px;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.upload-form {
+    min-width: 250px;
+    max-width: 475px;
+    width: 75%;
+    padding-left: 100px;
+}
+
+@media (max-width: 800px) {
+    .upload-form {
+        margin: auto;
+        min-width: 250px;
+        max-width: 475px;
+        width: 75%;
+        padding-left: 0px;
+    }
+}
+
+.upload-form .form-input, label {
+    min-width: 250px;
+    max-width: 475px;
+}
+
+.upload-form textarea {
+    height: 150px;
+}
+
+.drag-area.active {
+    border: 2px solid #fff;
+}
+
+.drag-area .icon {
+    font-size: 100px;
+    color: #fff;
+}
+
+.drag-area header {
+    font-size: 30px;
+    font-weight: 500;
+    color: #fff;
+}
+
+.drag-area span {
+    font-size: 25px;
+    font-weight: 500;
+    color: #fff;
+    margin: 10px 0 15px 0;
+}
+
+.drag-area button {
+    padding: 10px 25px;
+    font-size: 20px;
+    font-weight: 500;
+    border: none;
+    outline: none;
+    background: #fff;
+    color: #ad5252;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.drag-area img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
