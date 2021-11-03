@@ -29,6 +29,17 @@
   <div class="form-group">
     <button class="btn" type="submit">Explore</button>
   </div>
+
+  {{#if create}}
+  <a href="/login">
+    <h6>Have an Account? Login.</h6>
+  </a>
+  {{else}}
+  <a href="/create-user">
+    <h6>Create New User.</h6>
+  </a>
+  {{/if}}
+
 </form>
 
 {{#if create}}
