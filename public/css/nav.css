@@ -1,0 +1,19 @@
+
+.bar-nav {
+    width: 100%;
+    background-color: rgba(255, 0, 0, 0.199);
+    left: 0;
+    top: 0;
+    border-style: none;
+    height: 50px;
+}
+
+.bar-nav * {
+    display: inline;
+}
+
+.bar-nav button {
+    width: 100px;
+    height: 25px;
+}
+

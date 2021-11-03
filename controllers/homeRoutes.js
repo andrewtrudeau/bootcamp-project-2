@@ -1,21 +1,25 @@
 const router = require('express').Router();
-const { User } = require('../models');
+const { User, Artwork } = require('../models');
 const withAuth = require('../utils/auth');
 
 // Prevent non logged in users from viewing the homepage
 router.get('/', withAuth, async (req, res) => {
   try {
-    const userData = await User.findAll({
-      attributes: { exclude: ['password'] },
-      order: [['name', 'ASC']],
-    });
+    // const userData = await User.findAll({
+    //   attributes: { exclude: ['password'] },
+    //   order: [['name', 'ASC']],
+    // });
 
-    const users = userData.map((project) => project.get({ plain: true }));
+    // const users = userData.map((user) => user.get({ plain: true }));
+
+    const artData = await Artwork.findAll();
+
+    const art = artData.map((art) => art.get({ plain: true }));
 
     res.render('homepage', {
-      users,
       // Pass the logged in flag to the template
       logged_in: req.session.logged_in,
+      artworks: art,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -47,7 +51,7 @@ router.get('/login', (req, res) => {
     return;
   }
 
-  res.render('login');
+  res.render('login', { message: "Welcome" });
 });
 
 router.get('/create-user', (req, res) => {
@@ -56,27 +60,27 @@ router.get('/create-user', (req, res) => {
     return;
   }
 
-  res.render('create-user');
+  res.render('login', { create: true, message: "Create User" });
 });
 
 router.get('/artwork', withAuth, async (req, res) => {
   try {
     const artworkData = await Artwork.findAll({
-      include: [{ 
+      include: [{
         model: User,
         attributes: ['name'],
       }],
     })
-  
-  
-  
-  
+
+
+
+
   } catch {
     res.status(500).json(err);
   }
 })
 
-router.get('/artwork/:id',  (req, res) => {
+router.get('/artwork/:id', (req, res) => {
 
 })
 module.exports = router;

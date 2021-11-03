@@ -5,36 +5,32 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project 2</title>
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌹</text></svg>">
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="/css/upload.css">
   <link rel="stylesheet" href="/css/jass.css">
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/login.css">
+  <link rel="stylesheet" href="/css/upload.css">
+  <link rel="stylesheet" href="/css/home.css">
+  <link rel="stylesheet" href="/css/nav.css">
+
 </head>
 
 <body>
-  <header class="display-flex justify-space-between align-center p-2">
-    <h1>
-      User Registry
-    </h1>
-    <!-- Only display the logout button if the user is logged in -->
-    {{#if logged_in}}
-    <nav>
-      <button class="btn" id="logout">logout</button>
+  {{#if logged_in}}
+  <nav class="bar-nav">
 
-      <header>
-        <a href="/">
-          <h1 id='tech-blog-title'>Art Website Header</h1>
-        </a>
-      </header>
+    <ul>
+      <li><a href="/upload">Share your artwork</a></li>
+      <li><a href="/historical-art">View Historical Art</a></li>
+    </ul>
 
-      <ul>
-        <li><a href="/upload">Share your artwork</a></li>
-        <li><a href="/historical-art">View Historical Art</a></li>
-      </ul>
+    <button class="btn" id="logout">logout</button>
 
-    </nav>
-    {{/if}}
-  </header>
+  </nav>
+  {{/if}}
   <main class="container container-fluid mt-5">
     {{{ body }}}
   </main>
