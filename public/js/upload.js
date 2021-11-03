@@ -32,7 +32,7 @@ dropArea.addEventListener("drop", (event) => {
     showFile(); //calling function
 });
 let fileURL;
-const fileData = document.getElementById('fileData');
+let fileData = document.getElementById('fileData');
 
 function showFile() {
     let fileType = file.type; //getting selected file type

@@ -8,16 +8,34 @@
 
 body {}
 
+.bg-image-upload {
+    position: absolute;
+    filter: blur(7px);
+    -webkit-filter: blur(7px);
+    /* Full height */
+    background: linear-gradient(#63403a98, #180f0fbe, #20100f), url("/assets/upload-background.jpg") no-repeat center;
+    background-size: contain;
+    top: 0px;
+    right: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-size: cover;
+    box-shadow: inset 0 0 150px black;
+    background-color: black;
+}
+
 .wrapper-upload {
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
-    background: #ad5252;
+    background-image: linear-gradient(to bottom right, #ad5252bd, rgba(219, 200, 29, 0.144));
     border-radius: 20px;
     margin-bottom: 100px;
     display: flex;
     flex-flow: row wrap;
     padding: 75px;
+    border-style: solid;
+    border-color: #eedbdb3a;
 }
 
 .shadow-sharp {
@@ -26,7 +44,7 @@ body {}
 
 .drag-area {
     text-align: center;
-    border: 2px dashed #fff;
+    border: 2px dashed #eedbdb;
     height: 500px;
     width: 500px;
     border-radius: 10px;
@@ -35,16 +53,18 @@ body {}
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.158);
 }
 
 .upload-form {
+    margin-top: 0;
     min-width: 250px;
     max-width: 475px;
     width: 75%;
     padding-left: 100px;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1275px) {
     .upload-form {
         margin: auto;
         min-width: 250px;
@@ -54,7 +74,7 @@ body {}
     }
 }
 
-.upload-form .form-input, label {
+.upload-form .form-input[type=text], label {
     min-width: 250px;
     max-width: 475px;
 }
@@ -64,24 +84,24 @@ body {}
 }
 
 .drag-area.active {
-    border: 2px solid #fff;
+    border: 2px solid #eedbdb;
 }
 
 .drag-area .icon {
     font-size: 100px;
-    color: #fff;
+    color: #eedbdb;
 }
 
 .drag-area header {
     font-size: 30px;
     font-weight: 500;
-    color: #fff;
+    color: #eedbdb;
 }
 
 .drag-area span {
     font-size: 25px;
     font-weight: 500;
-    color: #fff;
+    color: #eedbdb;
     margin: 10px 0 15px 0;
 }
 
@@ -91,7 +111,7 @@ body {}
     font-weight: 500;
     border: none;
     outline: none;
-    background: #fff;
+    background: #eedbdb;
     color: #ad5252;
     border-radius: 5px;
     cursor: pointer;
@@ -102,4 +122,13 @@ body {}
     width: 100%;
     object-fit: cover;
     border-radius: 5px;
+}
+
+.upload-form textarea[type=text], .upload-form .form-input[type=text] {
+    border-color: #eedbdb71;
+    border-style: solid;
+    outline: #eedbdb;
+    color: #eedbdb;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.158);
 }
