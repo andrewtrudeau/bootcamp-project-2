@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Artwork } = require('../models');
+const { User, Artwork, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
 // Prevent non logged in users from viewing the homepage
@@ -80,7 +80,44 @@ router.get('/artwork', withAuth, async (req, res) => {
   }
 })
 
-router.get('/artwork/:id', (req, res) => {
-
+router.get('/artwork/:id', async (req, res) => {
+  try {
+    const artworkData = await Artwork.findByPk(req.params.id, {
+      include: [
+        {
+        model: User
+        }
+      ]
+    })
+  } catch {}
 })
+
+// router.get('/project/:id', async (req, res) => {
+//   try {
+//     const projectData = await Project.findByPk(req.params.id, {
+//       include: [
+//         {
+//           model: User,
+//           attributes: ['name'],
+//         },
+//       ],
+//     });
+//     const project = projectData.get({ plain: true });
+
+//     res.render('project', {
+//       ...project,
+//       logged_in: req.session.logged_in
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+
+router.get('/historical-art', async (req, res) => {
+  res.render('api-page')
+})
+
+// res.render('login', { create: true, message: "Create User" });
+// });
+
 module.exports = router;
