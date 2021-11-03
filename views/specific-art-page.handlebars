@@ -1,12 +1,11 @@
-  {{!-- TODO: Change Gallery to database names --}}
 {{!--display main art--}}
 <div class='specific-artwork-image'>
-  <img src="{{artwork.img}}" alt="{{artwork.description}}">
+  <img src="{{artwork.img_path}}" alt="{{artwork.description}}">
 </div>
 
 {{!-- display title and artist name --}}
 <div class='specific-artwork-details'>
-  <h2 id='specific-artist-name'>Artist: {{artwork.artist_name}}</h2>
+  <h2 id='specific-artist-name'>Artist: {{artwork.artist}}</h2>
   <h2 id='specific-artist-title'>Title: {{artwork.title}}</h2>
 </div>
 
@@ -17,5 +16,5 @@
 
 {{!-- display comments --}}
 <div class='comment-container'>
-  {{>specific-artwork-comments}}
+  {{>specific-artwork-comments comments}}
 </div>

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Artwork } = require('../models');
+const { User, Artwork, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
 // Prevent non logged in users from viewing the homepage
@@ -63,20 +63,44 @@ router.get('/create-user', (req, res) => {
   res.render('login', { create: true, message: "Create User" });
 });
 
-router.get('/artwork', withAuth, async (req, res) => {
+router.get('/artwork/:id', withAuth, async (req, res) => {
   try {
-    const artworkData = await Artwork.findAll({
-      include: [{
-        model: User,
-        attributes: ['name'],
-      }],
-    })
+    const artworkData = await Artwork.findOne({
+      where: {
+        id: req.params.id,
+      },
+    });
 
+    const artwork = artworkData.get({ plain: true });
 
+    const userData = await User.findOne({
+      where: {
+        id: artwork.user_id,
+      },
+    });
 
+    const user = userData.get({ plain: true });
 
-  } catch {
-    res.status(500).json(err);
+    let comments = [];
+    const commentIdList = artwork.comments;
+
+    commentIdList.forEach(async element => {
+      const commentData = await Comment.findOne({
+        where: {
+          id: element,
+        },
+      });
+
+      const comment = commentData.get({ plain: true });
+      comments.push(comment);
+    });
+
+    res.render('specific-art-page', { artwork: artwork, user: user, comments: comments });
+  } catch (err) {
+
+    console.log(err)
+    res.status(400).json(err);
+
   }
 })
 
