@@ -1,9 +1,9 @@
-let title = getElementbyId('artTitle')
-let image = getElementbyId('artImage')
-let artistName = getElementbyId('artistName')
-let date = getElementbyId('date')
-let medium = getElementbyId('medium')
-let link = getElementbyId('link')
+let title = $('#artTitle')
+let image = $('#artImage')
+let artistName = $('#artistName')
+let date = $('#date')
+let medium = $('#medium')
+let link = $('#link')
 let ids
 let selectedId
 
@@ -38,9 +38,9 @@ function fetchArt(){
 function displayArt(data){
     title.text(data.title)
     image.attr('src', data.primaryImage)
-    artistName.text(data.artistDisplayName)
-    date.text(data.objectDate)
-    medium.text(data.medium)
+    artistName.text('Artist: '+ data.artistDisplayName)
+    date.text('Date: '+ data.objectDate)
+    medium.text('Medium: '+ data.medium)
     link.attr('href', data.objectURL)
 
 }

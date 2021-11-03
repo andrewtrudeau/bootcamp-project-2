@@ -1,15 +1,29 @@
 {{!--display main art--}}
-<img src='' id='artImage'>
+<div class="bg-image-api"></div>
 
-<div>
-  <h1 id='artTitle'></h1>
-  <div>
-    <h3 id='artistName'></h3>
-    <p>Date:<span id='date'></span></p>
-    <p id='medium'></p>
-    <a href='' id='link'></a>
+<div class='container-fluid'>
+  {{!-- <div class ='row col-6'> --}}
+    <img src='' id='artImage' class="img-fluid float-left">
+  </div>
+  <div class='row information float-right'>
+    <h1 id='artTitle'></h1>
+    <div>
+      <div>
+        <h3 id='artistName'></h3>
+      </div>
+      <div>
+        <p id='date'></p>
+      </div>
+      <div>
+        <p id='medium'></p>
+      </div>
+      <div>
+        <a href='' id='link'>More information</a>
+      </div>
+    </div>
   </div>
 </div>
-
+  <script src = "https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="/js/api-call.js"></script>
 {{!-- display title and artist name --}}
 
