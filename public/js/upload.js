@@ -1,7 +1,7 @@
 //selecting all required elements
 const dropArea = document.querySelector(".drag-area"),
     dragText = dropArea.querySelector("header"),
-    button = dropArea.querySelector("button"),
+    button = dropArea.querySelector("#upload-button"),
     input = dropArea.querySelector("input");
 let file; //this is a global variable and we'll use it inside multiple functions
 button.onclick = () => {
@@ -29,6 +29,7 @@ dropArea.addEventListener("drop", (event) => {
     event.preventDefault(); //preventing from default behaviour
     //getting user select file and [0] this means if user select multiple files then we'll select only the first one
     file = event.dataTransfer.files[0];
+
     showFile(); //calling function
 });
 let fileURL;
@@ -61,6 +62,9 @@ const loginFormHandler = async (event) => {
     const title = document.querySelector('#title').value.trim();
     const artist = document.querySelector('#artist').value.trim();
     const description = document.querySelector('#desc').value.trim();
+    let upFile = fileData.files[0];
+    if (!upFile)
+        upFile = file;
 
     if (fileURL && artist && title && description) {
 
@@ -69,9 +73,9 @@ const loginFormHandler = async (event) => {
         let dateID = Date.now();
 
         const user_id = parseInt(document.querySelector('#user').innerHTML);
-        const img_path = "/db/images/" + dateID + "/" + dateID + "." + fileData.files[0].name.split('.').pop();
+        const img_path = "/db/images/" + dateID + "/" + dateID + "." + upFile.name.split('.').pop();
 
-        fd.append('image', fileData.files[0], dateID + "." + fileData.files[0].name.split('.').pop());
+        fd.append('image', upFile, dateID + "." + upFile.name.split('.').pop());
 
         // Send the e-mail and password to the server
         const response = await fetch('/api/users/upload', {
