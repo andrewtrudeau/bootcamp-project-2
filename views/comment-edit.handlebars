@@ -1,0 +1,20 @@
+<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+
+<form class="form">
+
+    <div class="form-group">
+        <label for="desc">Comment:</label><br>
+        <textarea class="form-input upload-input" type="text" id="comment">{{fill.content}}</textarea>
+    </div>
+
+    <input id="newComment" type="text" value="{{newComment}}" hidden>
+    <input id="artID" type="text" value="{{artworkID}}" hidden>
+    <input id="commentID" type="text" value="{{commentID}}" hidden>
+    <input id="userID" type="text" value="{{userID}}" hidden>
+
+    <div class="form-group">
+        <button class="btn" type="submit">Post</button>
+    </div>
+</form>
+
+<script src="/js/comment-edit.js"></script>
