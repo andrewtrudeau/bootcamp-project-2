@@ -18,7 +18,7 @@ With this application you are able to create an account for our website and uplo
 
 ## Installation
 
-Clone the repo and run npm I
+We cloned the repo and ran npm I.
 
 ## Usage
 
@@ -30,24 +30,20 @@ This project is under the MIT license.
 
 ## Contribution
 
-Team members:
-Andrew Trudeau  
-Tammie Crear
-Preston Conley
-Tanner Oliver
+Team members: Andrew Trudeau, Tammie Crear, Preston Conley, Tanner Oliver.
 
 ## TechStack
 
-bcrypt
-connect-session-sequelize
-dotenv
-express
-express-fileupload
-express-handlebars  
-express-session
-mysql2
-node-fetch
-sequelize
+bcrypt, 
+connect-session-sequelize, 
+dotenv, 
+express, 
+express-fileupload, 
+express-handlebars, 
+express-session, 
+mysql2, 
+node-fetch, and 
+sequelize.
 
 ## Test
 
