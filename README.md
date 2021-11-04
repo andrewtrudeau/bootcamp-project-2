@@ -47,7 +47,7 @@ sequelize.
 
 ## Test
 
-Uploaded our own images to see if there were any bugs in our code. Run tests in insomnia, add comments etc.
+Uploaded our own images to see if there were any bugs in our code. Run tests in insomnia, add comments, etc.
 
 ## Github
 
