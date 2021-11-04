@@ -11,16 +11,16 @@ Comment.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        comment_text: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
         user_id: {
             type: DataTypes.INTEGER,
             references: {
                 model: 'user',
                 key: 'id',
             },
+        },
+        comment_text: {
+            type: DataTypes.STRING,
+            allowNull: false,
         },
     },
     {

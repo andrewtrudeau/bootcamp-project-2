@@ -3,10 +3,13 @@
   <img src="{{artwork.img_path}}" alt="{{artwork.description}}">
 </div>
 
+<input id="artID" type="text" value="{{artwork.id}}" hidden>
+<input id="sessId" type="text" value="{{sessId}}" hidden>
+
 {{!-- display title and artist name --}}
 <div class='specific-artwork-details'>
-  <h2 id='specific-artist-name'>Artist: {{artwork.artist}}</h2>
   <h2 id='specific-artist-title'>Title: {{artwork.title}}</h2>
+  <h4 id='specific-artist-name'>Artist: {{artwork.artist}}</h4>
 </div>
 
 <div class='specific-artwork-description'>
@@ -14,7 +17,22 @@
   <p>{{artwork.description}}</p>
 </div>
 
+
 {{!-- display comments --}}
 <div class='comment-container'>
-  {{>specific-artwork-comments comments}}
+  <a href='{{artwork.id}}/new-comment'>New Comment</a>
+
+  {{#each comments as |comment|}}
+  <div class='comment-card' value="{{comment.user_id}}">
+    <div class='comment-user'>{{comment.user_id}}</div>
+    <button class="delete" id="{{comment.user_id}}">Delete</button>
+    <button class="edit" id="{{comment.user_id}}">Edit</button>
+    <div class='comment-text'>
+      <p>{{comment.comment_text}}</p>>
+    </div>
+  </div>
+  {{/each}}
 </div>
+
+
+<script src="/js/single-art.js"></script>

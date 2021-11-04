@@ -4,6 +4,22 @@ const fetch = require('node-fetch');
 let path = require('path')
 let fs = require('fs');
 
+// Username By Id //
+router.get('/:id', async (req, res) => {
+  try {
+    const userData = await User.findOne({
+      where: {
+        id: req.params.id
+      }
+    });
+    const user = userData.get({ plain: true });
+
+    res.status(200).json(user.name);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
 router.post('/login', async (req, res) => {
   try {
     // Find the user who matches the posted e-mail address
@@ -16,6 +32,7 @@ router.post('/login', async (req, res) => {
 
       return;
     }
+    const user = userData.get({ plain: true });
 
     // Verify the posted password with the password store in the database
     const validPassword = await userData.checkPassword(req.body.password);
@@ -31,7 +48,7 @@ router.post('/login', async (req, res) => {
     // Create session variables based on the logged in user
     req.session.save(() => {
 
-      req.session.user_id = userData.id;
+      req.session.user_id = user.id;
       req.session.logged_in = true;
 
       res.json({ user: userData, message: 'You are now logged in!' });

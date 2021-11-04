@@ -65,6 +65,8 @@ router.get('/create-user', (req, res) => {
 
 router.get('/artwork/:id', withAuth, async (req, res) => {
   try {
+
+    // Find artwork
     const artworkData = await Artwork.findOne({
       where: {
         id: req.params.id,
@@ -79,69 +81,58 @@ router.get('/artwork/:id', withAuth, async (req, res) => {
       },
     });
 
+    // Find user who posted
     const user = userData.get({ plain: true });
 
     let comments = [];
     const commentIdList = artwork.comments;
 
-    commentIdList.forEach(async element => {
+    // Find comments
+
+    await Promise.all(commentIdList.map(async (element) => {
       const commentData = await Comment.findOne({
         where: {
           id: element,
         },
       });
 
-      const comment = commentData.get({ plain: true });
-      comments.push(comment);
-    });
+      if (commentData) {
+        const comment = commentData.get({ plain: true });
+        comments.push(comment);
+      }
+    }))
 
-    res.render('specific-art-page', { artwork: artwork, user: user, comments: comments });
+    res.render('specific-art-page', { sessId: req.session.user_id, artwork: artwork, user: user, comments: comments });
   } catch (err) {
 
     console.log(err)
     res.status(400).json(err);
 
   }
-})
+});
 
-router.get('/artwork/:id', async (req, res) => {
+router.get('/artwork/:id/edit-comment/:commentID', withAuth, async (req, res) => {
   try {
-    const artworkData = await Artwork.findByPk(req.params.id, {
-      include: [
-        {
-        model: User
-        }
-      ]
-    })
-  } catch {}
-})
+    const commentData = await Comment.findOne({
+      where: {
+        id: req.params.commentID,
+      },
+    });
 
-// router.get('/project/:id', async (req, res) => {
-//   try {
-//     const projectData = await Project.findByPk(req.params.id, {
-//       include: [
-//         {
-//           model: User,
-//           attributes: ['name'],
-//         },
-//       ],
-//     });
-//     const project = projectData.get({ plain: true });
+    const comment = commentData.get({ plain: true });
 
-//     res.render('project', {
-//       ...project,
-//       logged_in: req.session.logged_in
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
+    res.render('comment-edit', { newComment: "false", userID: req.session.user_id, artworkID: req.params.id, commentID: comment.id, fill: { content: comment.comment_text } })
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+router.get('/artwork/:id/new-comment', withAuth, async (req, res) => {
+  res.render('comment-edit', { newComment: "true", userID: req.session.user_id, artworkID: req.params.id, fill: { content: "" } })
+});
 
 router.get('/historical-art', async (req, res) => {
   res.render('api-page')
 })
-
-// res.render('login', { create: true, message: "Create User" });
-// });
 
 module.exports = router;
