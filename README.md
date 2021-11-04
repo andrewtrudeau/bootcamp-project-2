@@ -30,11 +30,7 @@ This project is under the MIT license.
 
 ## Contribution
 
-Team members:
-Andrew Trudeau,   
-Tammie Crear, 
-Preston Conley, 
-Tanner Oliver.
+Team members: Andrew Trudeau, Tammie Crear, Preston Conley, Tanner Oliver.
 
 ## TechStack
 
