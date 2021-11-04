@@ -1,0 +1,104 @@
+.specific-artwork-image img {
+    min-width: 400px;
+    display: block;
+    margin: auto;
+    width: 75%;
+    justify-content: center;
+    background-color: red;
+    border-radius: 5px;
+}
+
+.comment-card {
+    background-color: red;
+}
+
+.specific-artwork-details *, .specific-artwork-description * {
+    color: rgba(226, 238, 237, 0.712);
+    font-weight: lighter;
+}
+
+.specific-artwork-details {
+    background-color: rgb(151, 151, 151);
+    min-width: 400px;
+    width: 25%;
+    margin: auto;
+    padding: 20px;
+    border-radius: 4px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.specific-artwork-description {
+    background-color: rgb(151, 151, 151);
+    min-width: 400px;
+    width: 75%;
+    margin: auto;
+    padding: 40px;
+    border-radius: 4px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.comment-container {
+    background-color: rgb(151, 151, 151);
+    min-width: 400px;
+    width: 75%;
+    margin: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 4px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.comment-card {
+    width: 100%;
+    background-color: rgb(105, 105, 105);
+    padding: 30px;
+    padding-top: 10px;
+}
+
+.comment-card h2 {
+    text-decoration: underline;
+    font-size: 2.5rem;
+}
+
+.comment-card p, .comment-container a {
+    font-size: 1.5rem;
+}
+
+.comment-container a {
+    text-align: center;
+    margin: 20px;
+    font-weight: bold;
+    color: darkkhaki;
+}
+
+.comment-card:nth-child(odd) {
+    background-color: rgb(77, 77, 77);
+}
+
+.delete, .edit {
+    background-color: indianred;
+    border: none;
+    border-radius: 10px;
+    width: 75px;
+    height: 25px;
+}
+
+.edit {
+    background-color: rgb(77, 87, 99);
+}
+
+.edit:hover {
+    background-color: rgb(49, 53, 58);
+}
+
+.delete:hover {
+    background-color: rgb(134, 60, 60);
+}
+
+.hidden {
+    display: none;
+}
