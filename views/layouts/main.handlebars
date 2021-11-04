@@ -10,28 +10,15 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" />
   <link rel="stylesheet" href="/css/jass.css">
-  <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/login.css">
   <link rel="stylesheet" href="/css/upload.css">
   <link rel="stylesheet" href="/css/home.css">
   <link rel="stylesheet" href="/css/nav.css">
   <link rel="stylesheet" href="/css/single-art.css">
-
+  <link rel="stylesheet" href="/css/api.css">
 </head>
 
 <body>
-  {{#if logged_in}}
-  <nav class="bar-nav">
-
-    <ul>
-      <li><a href="/upload">Share your artwork</a></li>
-      <li><a href="/historical-art">View Historical Art</a></li>
-    </ul>
-
-    <button class="btn" id="logout">logout</button>
-
-  </nav>
-  {{/if}}
   <main class="container container-fluid mt-5">
     {{{ body }}}
   </main>
@@ -43,6 +30,7 @@
   {{#if logged_in}}
   <script src="/js/logout.js"></script>
   {{/if}}
+
 </body>
 
 </html>
