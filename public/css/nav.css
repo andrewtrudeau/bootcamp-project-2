@@ -6,32 +6,3 @@
     width: 100%; 
     z-index: 5;
 }
-
-
-
-/* 
-.bar-nav {
-    width: 100%;
-    background-color: rgb(21, 10, 83);
-    left: 0;
-    top: 0;
-    border-style: none;
-    height: 50px;
-}
-
-.bar-nav * {
-    display: inline;
-}
-
-.bar-nav button {
-    width: 100px;
-    height: 25px;
-}
-
-.upload-btn{
-    justify-content: right;
-}
-
-.api-btn{
-    justify-content: right;
-} */

@@ -5,13 +5,6 @@ const withAuth = require('../utils/auth');
 // Prevent non logged in users from viewing the homepage
 router.get('/', withAuth, async (req, res) => {
   try {
-    // const userData = await User.findAll({
-    //   attributes: { exclude: ['password'] },
-    //   order: [['name', 'ASC']],
-    // });
-
-    // const users = userData.map((user) => user.get({ plain: true }));
-
     const artData = await Artwork.findAll();
 
     const art = artData.map((art) => art.get({ plain: true }));

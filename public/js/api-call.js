@@ -14,8 +14,6 @@ function getId(){
             res.json().then(function(data){
                 ids = data.objectIDs
                 selectedId = ids[Math.floor(Math.random() * ids.length)];
-                console.log(ids)
-                console.log(selectedId)
                 fetchArt()
             })
         }
@@ -29,7 +27,6 @@ function fetchArt(){
         if(res.ok){
             res.json().then(function(data){
                 displayArt(data)
-                console.log(data)
             })
         }
     })
