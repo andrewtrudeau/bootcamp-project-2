@@ -4,12 +4,7 @@
     margin: auto;
     width: 75%;
     justify-content: center;
-    background-color: red;
     border-radius: 5px;
-}
-
-.comment-card {
-    background-color: red;
 }
 
 .specific-artwork-details *, .specific-artwork-description * {
