@@ -24,6 +24,13 @@ We cloned the repo and ran npm I.
 
 When first accessing our page, you will be greeted with a login page. If you're not signed in, you will have the option to click the sign in or sign up button to create an account. Once you're logged in, you will be redirected to the main page which will be a page of local accounts that have uploaded photo's which will be cards that you can click and review. There is also a link to share your artwork by uploading and rendering a page that has a description field to enter information for your image. Otherwise when you click on one of the cards on screen it will bring you to a specific artworks page with more detail about that artwork. There is a comment section that will allow you to make, edit, and delete them as you please. Then there is a button on the home page that will be for our historical art section. Everytime you go to that page it should select a random artwork from the API we have chose to use and display some information about it.
 
+
+## Screenshot of Deployed Site
+
+![image](https://github.com/andrewtrudeau/bootcamp-project-2/blob/main/assets/images/user%20homepage.png)
+
+![image](https://github.com/andrewtrudeau/bootcamp-project-2/blob/main/assets/images/historical%20homepage.jpg)
+
 ## License
 
 This project is under the MIT license.
